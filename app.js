@@ -16,6 +16,10 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+
+/* ####### Developer Router ######### */
+/* ################################# */
+
 var developerRouter = express.Router();
 
 developerRouter
@@ -165,6 +169,154 @@ developerRouter
 });
 
 app.use('/api', developerRouter);
+
+
+/* ####### Employer Router ######### */
+/* ################################# */
+
+var employerRouter = express.Router();
+
+employerRouter
+	.route('/items')
+	.post(function (request, response){
+		console.log('POST / items');
+
+		var employer = new Employer(request.body);
+
+		employer.save();
+
+		response.status(201).send(employer);
+	})
+	.get(function (request, response){
+
+		console.log('GET / items');
+
+		Employer.find(function (error, employer){
+
+			console.log(error);
+
+			if (error) {
+				response.status(500).send(error);
+				return;
+			}
+			console.log(employer);
+
+			response.json(employer);
+		});
+	});
+
+employerRouter
+	.route('/items/:itemId')
+	.get(function (request, response) {
+
+		console.log('GET / items/:itemId');
+
+		var itemId = request.params.itemId;
+
+		Employer.findOne({ id: itemId }, function (error, employer){
+
+			if (error) {
+				response.status(500).send(error);
+				return;
+			}
+
+			console.log(employer);
+
+			response.json(employer);
+
+		});
+	})
+	.put(function (request, response) {
+		console.log('PUT / items / :itemId');
+
+		var itemId = request.params.itemId;
+
+		Employer.findOne({ id: itemId }, function (error, employer){
+
+		if (error) {
+				response.status(500).send(error);
+				return;
+			}
+
+		if (employer) {
+			employer.email = request.body.email;
+			employer.email_confirmation = request.body.email_confirmation;
+			employer.password = request.body.password;
+			employer.password_confirmation = request.body.password_confirmation;
+
+			employer.save();
+
+			response.json(employer);
+			return;
+		}
+
+		response.status(404).json({
+			message: 'Item with id ' + itemId + ' was found.'
+		});
+	});
+})
+	.patch(function (request, response) {
+		console.log('PATCH / items / :itemId');
+
+		var itemId = request.params.itemId;
+
+		Employer.findOne({ id: itemId }, function (error, employer){
+
+		if (error) {
+				response.status(500).send(error);
+				return;
+			}
+
+		if (employer) {
+		for (var property in request.body) {
+			if (request.body.hasOwnProperty(property)) {
+				if (typeof employer[property] !== 'undefined') {
+					employer[property] = request.body[property];
+				}
+			}
+		}
+		employer.save();
+
+		response.json(employer);
+		return;
+	}
+
+	response.status(404).json({
+			message: 'Item with id ' + itemId + ' was not found.'
+		});
+	});
+})
+	.delete (function (request, response){
+
+		console.log('DELETE / items /:itemId');
+
+		var itemId = request.params.itemId;
+
+		Employer.findOne({ id: itemId }, function (error, employer) {
+			if (error) {
+				response.status(500).send(error);
+				return;
+			}
+
+			if (employer) {
+				employer.remove(function (error) {
+					if (error) {
+						response.status(500).send(error);
+					}
+
+					response.status(204).json({
+						message: 'Item with id ' + itemId + ' was removed.'
+					});
+				});
+			} else {
+				response.status(404).json({
+				message: 'Item with id ' + itemId + ' was not found.'
+			});
+		}
+	});
+});
+
+app.use('/api', employerRouter);
 
 app.listen(PORT, function () {
   console.log('Listening on port ' + PORT);

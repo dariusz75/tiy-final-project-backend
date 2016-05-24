@@ -59,7 +59,6 @@ cv: {
 
 photo: {
 	type: String,
-	required: true
 },
 
 html: {
