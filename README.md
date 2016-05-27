@@ -5,7 +5,7 @@
 
 ###Create a new item - email
 
-Method: POST
+Method: POST__
 URL: `/api/developers/email`
 
 ###Create a new item - confirm-email
