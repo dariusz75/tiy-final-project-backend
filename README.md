@@ -1,26 +1,26 @@
 # tiy-final-project-backend
 
-##Developer's route API End Points.
+##Developer's routers API End Points.
 
 
-###Create a new item 
-
-Method: POST <br />
-URL: `/api/developers`
-
-###Create a new item - confirm-email
+###Create a new Developer 
 
 Method: POST <br />
 URL: `/api/developers`
 
+###Create a list of Developers 
 
-###Create a new item - password
-
-Method: POST <br />
+Method: GET <br />
 URL: `/api/developers`
 
-###Create a new item - confirm-password
+###Select one specified Developer 
+
+Method: PATH <br />
+URL: `/api/developers/:developerId`
+
+
+
+##Employer's routers API End Points.
 
 Method: POST <br />
-URL: `/api/developers`
-
+URL: `/api/employers`
