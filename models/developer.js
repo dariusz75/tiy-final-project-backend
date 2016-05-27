@@ -14,20 +14,8 @@ email: {
 	unique: true,
   required: true
 },
-
-email_confirmation: {
-	type: String,
-	unique: true,
-  required: true
-},
-
+c
 password: {
-	type: String,
-	unique: true,
-  required: true
-},
-
-password_confirmation: {
 	type: String,
 	unique: true,
   required: true

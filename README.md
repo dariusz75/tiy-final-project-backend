@@ -3,23 +3,24 @@
 ##Developer's route API End Points.
 
 
-###Create a new item - email
+###Create a new item 
 
 Method: POST <br />
-URL: `/api/developers/email`
+URL: `/api/developers`
 
 ###Create a new item - confirm-email
 
-Method: POST
-URL: `/api/developers/confirm-email`
+Method: POST <br />
+URL: `/api/developers`
 
 
 ###Create a new item - password
 
-Method: POST
-URL: `/api/developers/password`
+Method: POST <br />
+URL: `/api/developers`
 
 ###Create a new item - confirm-password
 
-Method: POST
-URL: `/api/developers/confirm-password`
+Method: POST <br />
+URL: `/api/developers`
+
