@@ -4,8 +4,9 @@ var Schema = mongoose.Schema;
 var itemSchema = new Schema({
 
 id: {
-type: Number,
-required: true
+	type: String,
+	type: Number,
+	required: true
 },
 
 email: {
