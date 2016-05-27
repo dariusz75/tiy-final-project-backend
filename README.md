@@ -22,5 +22,8 @@ URL: `/api/developers/:developerId`
 
 ##Employer's routers API End Points.
 
+
+###Create a new Employer
+
 Method: POST <br />
 URL: `/api/employers`
