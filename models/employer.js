@@ -15,23 +15,11 @@ email: {
   required: true
 },
 
-email_confirmation: {
-	type: String,
-	unique: true,
-  required: true
-},
-
 password: {
 	type: String,
 	unique: true,
   required: true
-},
-
-password_confirmation: {
-	type: String,
-	unique: true,
-  required: true
-},
+}
 
 });
 
