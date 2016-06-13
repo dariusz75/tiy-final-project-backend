@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var employerRouter = require('./routers/employersRouter.js');
 var app = express();
+var cors = require('cors');
 
 var PORT = 8080;
 var HOST_NAME = 'localhost';
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-
+app.use(cors());
 
 
 app.use('/api', employerRouter);

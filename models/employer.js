@@ -5,7 +5,7 @@ var itemSchema = new Schema({
 
 id: {
 	type: String,
-	type: Number,
+	type: String,
 	required: true
 },
 

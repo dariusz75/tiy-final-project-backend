@@ -47,6 +47,8 @@ employerRouter
         throw error;
       }
 
+      console.log(request.body.password, salt);
+
       bcrypt.hash(request.body.password, salt, function (error, hash) {
 
         if (error) {
